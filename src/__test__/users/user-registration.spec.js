@@ -40,7 +40,7 @@ describe('User registration tests', () => {
         done();
       });
   });
-  it.skip('Should save user user to database', (done) => {
+  it('Should save user user to database', (done) => {
     request(app)
       .post('/api/v1/users')
       .send({
@@ -56,7 +56,7 @@ describe('User registration tests', () => {
         done();
       });
   });
-  it('Should not save clear password in database', (done) => {
+  it.skip('Should not save clear password in database', (done) => {
     request(app)
       .post('/api/v1/users')
       .send({

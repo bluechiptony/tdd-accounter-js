@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "^8.5.0",

@@ -25,7 +25,6 @@ describe('User registration tests', () => {
         expect(response.status).toBe(200);
         done();
       });
-    // .expect(200, done);
   });
 
   it('should Return success message when sign up request', (done) => {
@@ -41,7 +40,23 @@ describe('User registration tests', () => {
         done();
       });
   });
-  it('Should save provided user to database', (done) => {
+  it.skip('Should save user user to database', (done) => {
+    request(app)
+      .post('/api/v1/users')
+      .send({
+        userName: 'user2',
+        email: 'user2@mail.com',
+        password: 'Us3r0ne',
+      })
+      .then(() => {
+        User.findAll().then((userList) => {
+          expect(userList.length).toBe(1);
+          expect(userList[0].userName).toBe('user2');
+        });
+        done();
+      });
+  });
+  it('Should not save clear password in database', (done) => {
     request(app)
       .post('/api/v1/users')
       .send({
@@ -52,6 +67,7 @@ describe('User registration tests', () => {
       .then(() => {
         User.findAll().then((userList) => {
           expect(userList.length).toBe(1);
+          expect(userList[0].password).not.toBe('Us3r0ne');
         });
         done();
       });
